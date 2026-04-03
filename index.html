@@ -5,601 +5,464 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#FAF8F4">
-<meta name="color-scheme" content="light">
 <title>ALIANÇA — Mastermind de Liderança Inabalável</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-/* ╔══════════════════════════════════════════════════════════════╗
-   ║  ALIANÇA DESIGN SYSTEM v4.0                                  ║
-   ║  Apple Principal Designer · Publish-Ready                     ║
-   ║  Target: Rich Christian Female Leader, 35+                    ║
-   ║  Accessibility: WCAG AA · Large Text Optimized                ║
-   ╚══════════════════════════════════════════════════════════════╝ */
-
-/* ══════════════════════════════════════════
-FOUNDATIONS: DESIGN TOKENS
-══════════════════════════════════════════ */
-:root {
-/* ── Color: Surfaces ── */
-–surface-base:       #FAF8F4;
-–surface-secondary:  #F4F1EB;
-–surface-tertiary:   #EEEAE3;
-–surface-elevated:   #FFFFFF;
-–surface-grouped:    #F7F5F0;
-–surface-gold-wash:  rgba(196,163,42, 0.035);
-–surface-gold-hover: rgba(196,163,42, 0.06);
-–surface-gold-active:rgba(196,163,42, 0.09);
-
-/* ── Color: Brand Gold ── */
-–gold-50:  #FDF8E8;
-–gold-100: #F5EABD;
-–gold-200: #E8D48A;
-–gold-300: #D4AF37;
-–gold-400: #C4A32A;
-–gold-500: #A8891F;
-–gold-600: #8B7019;
-–gold-gradient:      linear-gradient(135deg, #C4A32A 0%, #E8D48A 35%, #D4AF37 65%, #A8891F 100%);
-–gold-gradient-text: linear-gradient(135deg, #A8891F 0%, #D4AF37 40%, #C4A32A 70%, #A8891F 100%);
-–gold-gradient-btn:  linear-gradient(135deg, #B89520 0%, #D4AF37 30%, #E8D48A 55%, #D4AF37 75%, #A8891F 100%);
-
-/* ── Color: Semantic Text ── */
-–text-primary:     #1A1A1A;
-–text-secondary:   #3D3A35;
-–text-tertiary:    #6B6560;
-–text-quaternary:  #8A857D;
-–text-placeholder: #B5AFA8;
-–text-disabled:    #D0CCC5;
-
-/* ── Color: Semantic Borders ── */
-–separator:           rgba(26,26,26, 0.06);
-–separator-strong:    rgba(26,26,26, 0.10);
-–border-gold:         rgba(196,163,42, 0.18);
-–border-gold-medium:  rgba(196,163,42, 0.30);
-–border-gold-strong:  rgba(196,163,42, 0.50);
-
-/* ── Elevation ── */
-–shadow-xs:       0 1px 2px rgba(0,0,0,0.03);
-–shadow-sm:       0 1px 3px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.02);
-–shadow-md:       0 2px 8px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
-–shadow-lg:       0 4px 12px rgba(0,0,0,0.05), 0 12px 40px rgba(0,0,0,0.04);
-–shadow-xl:       0 8px 24px rgba(0,0,0,0.06), 0 20px 60px rgba(0,0,0,0.05);
-–shadow-gold:     0 4px 24px rgba(196,163,42, 0.12);
-–shadow-gold-lg:  0 8px 40px rgba(196,163,42, 0.16);
-
-/* ── Typography: Families ── */
-–font-display:    ‘Playfair Display’, Georgia, ‘Times New Roman’, serif;
-–font-complement: ‘Cormorant Garamond’, Georgia, serif;
-–font-body:       ‘Lato’, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-
-/* ── Typography: Scale (35+ optimized — larger base) ──
-Level 1 (Hero):     64px
-Level 2 (Display):  48px
-Level 3 (Title 1):  40px
-Level 4 (Title 2):  32px
-Level 5 (Title 3):  26px
-Level 6 (Headline): 22px
-Level 7 (Body L):   19px
-Level 8 (Body):     17px  ← base
-Level 9 (Caption):  14px
-*/
-–type-hero:     clamp(2.75rem, 6vw, 4rem);       /* 44→64 */
-–type-display:  clamp(2.25rem, 4.5vw, 3rem);     /* 36→48 */
-–type-title1:   clamp(1.875rem, 3.8vw, 2.5rem);  /* 30→40 */
-–type-title2:   clamp(1.5rem, 3vw, 2rem);        /* 24→32 */
-–type-title3:   clamp(1.25rem, 2.2vw, 1.625rem); /* 20→26 */
-–type-headline: clamp(1.125rem, 1.8vw, 1.375rem);/* 18→22 */
-–type-body-lg:  1.1875rem;                        /* 19 */
-–type-body:     1.0625rem;                        /* 17 ← base */
-–type-caption:  0.875rem;                         /* 14 */
-–type-micro:    0.75rem;                          /* 12 */
-
-/* ── Spacing: 8pt Grid ── */
-–sp-2:   2px;   –sp-4:   4px;   –sp-8:   8px;
-–sp-12:  12px;  –sp-16:  16px;  –sp-20:  20px;
-–sp-24:  24px;  –sp-32:  32px;  –sp-40:  40px;
-–sp-48:  48px;  –sp-56:  56px;  –sp-64:  64px;
-–sp-72:  72px;  –sp-80:  80px;  –sp-96:  96px;
-–sp-120: 120px; –sp-160: 160px;
-
-/* ── Radius ── */
-–radius-xs:  6px;   –radius-sm:  8px;   –radius-md:  12px;
-–radius-lg:  16px;  –radius-xl:  20px;  –radius-2xl: 28px;
-–radius-full: 9999px;
-
-/* ── Motion ── */
-–ease-spring:  cubic-bezier(0.22, 1, 0.36, 1);
-–ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
-–ease-in-out:  cubic-bezier(0.45, 0, 0.55, 1);
-–dur-fast:     120ms;
-–dur-normal:   250ms;
-–dur-slow:     450ms;
-–dur-reveal:   750ms;
-
-/* ── Layout ── */
-–max-w:       1000px;
-–max-narrow:  680px;
-–tap-target:  44px;
-–safe-bottom: env(safe-area-inset-bottom, 0px);
+:root{
+  --surface-base:#FAF8F4;--surface-sec:#F4F1EB;--surface-tert:#EEEAE3;
+  --surface-el:#FFFFFF;--surface-grouped:#F7F5F0;
+  --surface-gw:rgba(196,163,42,.035);--surface-gh:rgba(196,163,42,.06);--surface-ga:rgba(196,163,42,.09);
+  --gold-50:#FDF8E8;--gold-100:#F5EABD;--gold-200:#E8D48A;--gold-300:#D4AF37;
+  --gold-400:#C4A32A;--gold-500:#A8891F;--gold-600:#8B7019;
+  --gold-grad:linear-gradient(135deg,#C4A32A 0%,#E8D48A 35%,#D4AF37 65%,#A8891F 100%);
+  --gold-text:linear-gradient(135deg,#A8891F 0%,#D4AF37 40%,#C4A32A 70%,#A8891F 100%);
+  --gold-btn:linear-gradient(135deg,#B89520 0%,#D4AF37 30%,#E8D48A 55%,#D4AF37 75%,#A8891F 100%);
+  --text-1:#1A1A1A;--text-2:#3D3A35;--text-3:#6B6560;--text-4:#8A857D;--text-5:#B5AFA8;--text-dis:#D0CCC5;
+  --sep:rgba(26,26,26,.06);--sep-s:rgba(26,26,26,.10);
+  --b-gold:rgba(196,163,42,.18);--b-gold-m:rgba(196,163,42,.30);--b-gold-s:rgba(196,163,42,.50);
+  --sh-xs:0 1px 2px rgba(0,0,0,.03);--sh-sm:0 1px 3px rgba(0,0,0,.04),0 2px 6px rgba(0,0,0,.02);
+  --sh-md:0 2px 8px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.03);
+  --sh-lg:0 4px 12px rgba(0,0,0,.05),0 12px 40px rgba(0,0,0,.04);
+  --sh-gold:0 4px 24px rgba(196,163,42,.12);--sh-gold-lg:0 8px 40px rgba(196,163,42,.16);
+  --f-d:'Playfair Display',Georgia,serif;--f-c:'Cormorant Garamond',Georgia,serif;
+  --f-b:'Lato',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --t-hero:clamp(2.75rem,6vw,4rem);--t-disp:clamp(2.25rem,4.5vw,3rem);
+  --t-t1:clamp(1.875rem,3.8vw,2.5rem);--t-t2:clamp(1.5rem,3vw,2rem);
+  --t-t3:clamp(1.25rem,2.2vw,1.625rem);--t-hl:clamp(1.125rem,1.8vw,1.375rem);
+  --t-bl:1.1875rem;--t-b:1.0625rem;--t-cap:0.875rem;--t-mic:0.75rem;
+  --sp-2:2px;--sp-4:4px;--sp-8:8px;--sp-12:12px;--sp-16:16px;--sp-20:20px;
+  --sp-24:24px;--sp-32:32px;--sp-40:40px;--sp-48:48px;--sp-56:56px;
+  --sp-64:64px;--sp-72:72px;--sp-80:80px;--sp-96:96px;--sp-120:120px;
+  --r-xs:6px;--r-sm:8px;--r-md:12px;--r-lg:16px;--r-xl:20px;--r-2xl:28px;--r-full:9999px;
+  --ease:cubic-bezier(.22,1,.36,1);--ease-o:cubic-bezier(.16,1,.3,1);
+  --dur-f:120ms;--dur-n:250ms;--dur-s:450ms;--dur-r:750ms;
+  --max-w:1000px;--tap:44px;--safe:env(safe-area-inset-bottom,0px);
 }
-
-/* ══════════════════════════════════════════
-RESET
-══════════════════════════════════════════ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-size-adjust:100%;font-size:100%}
-body{font-family:var(–font-body);font-size:var(–type-body);font-weight:300;line-height:1.8;color:var(–text-secondary);background:var(–surface-base);overflow-x:hidden}
-img{max-width:100%;height:auto;display:block}
-a{color:inherit;text-decoration:none}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-size-adjust:100%}
+body{font-family:var(--f-b);font-size:var(--t-b);font-weight:300;line-height:1.8;color:var(--text-2);background:var(--surface-base);overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg width='6' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='6' height='6' fill='%23FAF8F4'/%3E%3Ccircle cx='1' cy='1' r='.4' fill='%23EDE9E1' opacity='.25'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
+img{max-width:100%;height:auto;display:block}a{color:inherit;text-decoration:none}
 button{font:inherit;border:none;background:none;cursor:pointer}
-::selection{background:rgba(196,163,42,0.14);color:var(–text-primary)}
+::selection{background:rgba(196,163,42,.14);color:var(--text-1)}
+.skip{position:absolute;top:-100%;left:var(--sp-16);z-index:1000;padding:var(--sp-12) var(--sp-24);background:var(--gold-400);color:#fff;font-weight:700;font-size:var(--t-cap);border-radius:var(--r-sm);transition:top var(--dur-f) var(--ease-o)}
+.skip:focus{top:var(--sp-16)}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+:focus-visible{outline:3px solid var(--gold-400);outline-offset:3px;border-radius:var(--r-xs)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1!important;transform:none!important}}
 
-/* Paper texture */
-body::after{content:’’;position:fixed;inset:0;background-image:url(“data:image/svg+xml,%3Csvg width=‘6’ height=‘6’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Crect width=‘6’ height=‘6’ fill=’%23FAF8F4’/%3E%3Ccircle cx=‘1’ cy=‘1’ r=‘0.4’ fill=’%23EDE9E1’ opacity=‘0.25’/%3E%3C/svg%3E”);pointer-events:none;z-index:0;opacity:0.4}
+/* Animations */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity var(–dur-r) var(–ease),transform var(–dur-r) var(–ease)}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:80ms}.d2{transition-delay:160ms}.d3{transition-delay:240ms}.d4{transition-delay:320ms}
+@keyframes heroIn{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(.8)}}
+@keyframes sline{0%,100%{opacity:.5;transform:scaleY(1)}50%{opacity:.15;transform:scaleY(.5);transform-origin:top}}
 
-/* ══════════════════════════════════════════
-ACCESSIBILITY
-══════════════════════════════════════════ */
-.skip-link{position:absolute;top:-100%;left:var(–sp-16);z-index:1000;padding:var(–sp-12) var(–sp-24);background:var(–gold-400);color:#fff;font-weight:700;font-size:var(–type-caption);border-radius:var(–radius-sm);transition:top var(–dur-fast) var(–ease-out)}
-.skip-link:focus{top:var(–sp-16)}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-:focus-visible{outline:3px solid var(–gold-400);outline-offset:3px;border-radius:var(–radius-xs)}
-
-@media(prefers-reduced-motion:reduce){
-*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}
-.reveal{opacity:1!important;transform:none!important}
-}
-
-/* ══════════════════════════════════════════
-ANIMATIONS
-══════════════════════════════════════════ */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity var(–dur-reveal) var(–ease-spring),transform var(–dur-reveal) var(–ease-spring);will-change:opacity,transform}
-.reveal.is-visible{opacity:1;transform:translateY(0)}
-.d1{transition-delay:80ms}.d2{transition-delay:160ms}.d3{transition-delay:240ms}.d4{transition-delay:320ms}.d5{transition-delay:400ms}
-
-@keyframes heroEnter{from{opacity:0;transform:translateY(20px) scale(0.98)}to{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.25;transform:scale(0.8)}}
-@keyframes scrollLine{0%,100%{opacity:0.5;transform:scaleY(1)}50%{opacity:0.15;transform:scaleY(0.5);transform-origin:top}}
-@keyframes shimmer{0%{left:-100%}100%{left:100%}}
-
-/* ══════════════════════════════════════════
-LAYOUT
-══════════════════════════════════════════ */
-.container{width:100%;max-width:var(–max-w);margin:0 auto;padding:0 var(–sp-24);position:relative;z-index:1}
-.container–narrow{max-width:var(–max-narrow)}
-.screen{padding:var(–sp-96) 0;position:relative}
-
-/* ══════════════════════════════════════════
-TYPOGRAPHY COMPONENTS
-══════════════════════════════════════════ */
-.t-hero{font-family:var(–font-display);font-size:var(–type-hero);font-weight:400;line-height:1.06;letter-spacing:-0.015em;color:var(–text-primary)}
-.t-display{font-family:var(–font-display);font-size:var(–type-display);font-weight:400;line-height:1.12;color:var(–text-primary)}
-.t-title1{font-family:var(–font-display);font-size:var(–type-title1);font-weight:400;line-height:1.15;color:var(–text-primary)}
-.t-title2{font-family:var(–font-display);font-size:var(–type-title2);font-weight:400;line-height:1.2;color:var(–text-primary)}
-.t-title3{font-family:var(–font-display);font-size:var(–type-title3);font-weight:500;line-height:1.28;color:var(–text-primary)}
-.t-headline{font-family:var(–font-display);font-size:var(–type-headline);font-weight:500;line-height:1.32;color:var(–text-primary)}
-.t-body-lg{font-size:var(–type-body-lg);line-height:1.85;color:var(–text-secondary)}
-.t-body{font-size:var(–type-body);line-height:1.8;color:var(–text-secondary)}
-.t-caption{font-size:var(–type-caption);line-height:1.6;color:var(–text-tertiary)}
-.t-micro{font-size:var(–type-micro);line-height:1.5;color:var(–text-quaternary)}
-
-.overline{font-family:var(–font-body);font-size:var(–type-micro);font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(–gold-500)}
-.complement{font-family:var(–font-complement)}
-.text-gold{background:var(–gold-gradient-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.text-gold-solid{color:var(–gold-400)}
-.italic{font-style:italic}
+/* Layout */
+.con{width:100%;max-width:var(–max-w);margin:0 auto;padding:0 var(–sp-24);position:relative;z-index:1}
+.scr{padding:var(–sp-96) 0;position:relative}
 .center{text-align:center}
 
-/* ══════════════════════════════════════════
-DECORATIVE COMPONENTS
-══════════════════════════════════════════ */
-.gold-rule{width:48px;height:1px;background:var(–gold-gradient);border:none}
-.gold-rule–center{margin:var(–sp-24) auto}
-.gold-rule–left{margin:var(–sp-24) auto var(–sp-24) 0}
-.sep{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(–border-gold),transparent);border:none}
-.ornament{display:flex;align-items:center;justify-content:center;gap:var(–sp-16)}
-.ornament::before,.ornament::after{content:’’;width:32px;height:1px;background:var(–gold-300);opacity:0.3}
-.ornament__sym{color:var(–gold-300);font-size:7px;opacity:0.45}
+/* Typography */
+.t-hero{font-family:var(–f-d);font-size:var(–t-hero);font-weight:400;line-height:1.06;letter-spacing:-.015em;color:var(–text-1)}
+.t-disp{font-family:var(–f-d);font-size:var(–t-disp);font-weight:400;line-height:1.12;color:var(–text-1)}
+.t-t1{font-family:var(–f-d);font-size:var(–t-t1);font-weight:400;line-height:1.15;color:var(–text-1)}
+.t-t2{font-family:var(–f-d);font-size:var(–t-t2);font-weight:400;line-height:1.2;color:var(–text-1)}
+.t-t3{font-family:var(–f-d);font-size:var(–t-t3);font-weight:500;line-height:1.28;color:var(–text-1)}
+.t-hl{font-family:var(–f-d);font-size:var(–t-hl);font-weight:500;line-height:1.32;color:var(–text-1)}
+.t-bl{font-size:var(–t-bl);line-height:1.85;color:var(–text-2)}
+.t-b{font-size:var(–t-b);line-height:1.8;color:var(–text-2)}
+.t-cap{font-size:var(–t-cap);line-height:1.6;color:var(–text-3)}
+.t-mic{font-size:var(–t-mic);line-height:1.5;color:var(–text-4)}
+.over{font-family:var(–f-b);font-size:var(–t-mic);font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(–gold-500)}
+.tg{background:var(–gold-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.tgs{color:var(–gold-400)}
 
-/* Scroll progress */
-.scroll-progress{position:fixed;top:0;left:0;width:0%;height:2px;background:var(–gold-gradient);z-index:100;transition:width 50ms linear}
+/* Decorative */
+.gr{width:48px;height:1px;background:var(–gold-grad);border:none}
+.gr-c{margin:var(–sp-24) auto}.gr-l{margin:var(–sp-24) auto var(–sp-24) 0}
+.sep{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(–b-gold),transparent);border:none}
+.orn{display:flex;align-items:center;justify-content:center;gap:var(–sp-16)}
+.orn::before,.orn::after{content:’’;width:32px;height:1px;background:var(–gold-300);opacity:.3}
 
-/* Section dots */
-.sec-nav{position:fixed;right:var(–sp-24);top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:var(–sp-12)}
-.sec-nav__dot{width:8px;height:8px;border-radius:50%;background:var(–text-placeholder);border:none;padding:0;cursor:pointer;transition:all var(–dur-normal) var(–ease-spring);position:relative}
-.sec-nav__dot::before{content:’’;position:absolute;inset:-18px}
-.sec-nav__dot.is-active{background:var(–gold-400);transform:scale(1.4)}
-.sec-nav__dot:hover{background:var(–gold-300);transform:scale(1.2)}
+/* Scroll bar */
+.spb{position:fixed;top:0;left:0;width:0%;height:2px;background:var(–gold-grad);z-index:100;transition:width 50ms linear}
 
-/* ══════════════════════════════════════════
-GROUPED CARD — Apple-style inset grouped
-Clusters related content visually
-══════════════════════════════════════════ */
-.group{
-background:var(–surface-elevated);
-border:1px solid var(–separator);
-border-radius:var(–radius-xl);
-overflow:hidden;
-box-shadow:var(–shadow-sm);
+/* Nav dots */
+.snav{position:fixed;right:var(–sp-24);top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:var(–sp-12)}
+.snav__d{width:8px;height:8px;border-radius:50%;background:var(–text-5);border:none;padding:0;cursor:pointer;transition:all var(–dur-n) var(–ease);position:relative}
+.snav__d::before{content:’’;position:absolute;inset:-18px}
+.snav__d.act{background:var(–gold-400);transform:scale(1.4)}
+.snav__d:hover{background:var(–gold-300);transform:scale(1.2)}
+
+/* ═══════════════════════════════════════
+HERO
+═══════════════════════════════════════ */
+.hero{min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;text-align:center;padding:var(–sp-80) 0 var(–sp-64);overflow:hidden}
+.hero::before{content:’’;position:absolute;top:-15%;left:50%;transform:translateX(-50%);width:640px;height:640px;background:radial-gradient(circle,rgba(196,163,42,.05) 0%,transparent 65%);pointer-events:none}
+.hero__b{display:inline-flex;align-items:center;gap:var(–sp-8);padding:var(–sp-12) var(–sp-24);border:1px solid var(–b-gold);border-radius:var(–r-full);background:var(–surface-gw);min-height:var(–tap);animation:heroIn .9s var(–ease) .1s both}
+.hero__bd{width:5px;height:5px;border-radius:50%;background:var(–gold-400);animation:dot 2.5s ease-in-out infinite}
+.hero__logo{margin-top:var(–sp-40);animation:heroIn 1s var(–ease) .2s both}
+.hero__logo img{width:clamp(200px,28vw,300px);margin:0 auto;filter:drop-shadow(0 2px 8px rgba(196,163,42,.06))}
+.hero__title{margin-top:var(–sp-32);animation:heroIn 1s var(–ease) .35s both}
+.hero__sub{max-width:560px;margin:var(–sp-24) auto 0;animation:heroIn 1s var(–ease) .5s both}
+.hero__pr{max-width:640px;margin:var(–sp-40) auto 0;padding:var(–sp-32) var(–sp-40);border:1px solid var(–b-gold);border-radius:var(–r-lg);background:var(–surface-gw);animation:heroIn 1s var(–ease) .65s both}
+.hero__pr p{font-family:var(–f-c);font-size:clamp(var(–t-b),1.8vw,var(–t-t3));font-style:italic;color:var(–text-2);line-height:1.8}
+.hero__pr strong{color:var(–gold-500);font-weight:600}
+.hero__sc{position:absolute;bottom:var(–sp-40);left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:var(–sp-8);animation:heroIn 1s var(–ease) 1s both}
+.hero__scl{width:1px;height:28px;background:linear-gradient(to bottom,var(–gold-300),transparent);animation:sline 2.2s ease-in-out infinite}
+
+/* ═══════════════════════════════════════
+PAIN ITEMS — Expandable on tap
+═══════════════════════════════════════ */
+.pain{display:flex;align-items:flex-start;gap:var(–sp-20);padding:var(–sp-20) var(–sp-24);border-radius:var(–r-md);border:1px solid transparent;transition:all var(–dur-n) var(–ease);cursor:default}
+.pain:hover{background:var(–surface-el);border-color:var(–sep);box-shadow:var(–sh-xs)}
+.pain__ic{flex-shrink:0;width:18px;margin-top:6px;color:var(–gold-400);font-size:7px}
+.pain__tx{font-size:var(–t-bl);line-height:1.8}
+.pain__tx strong{color:var(–text-1);font-weight:400;font-family:var(–f-d)}
+
+/* ═══════════════════════════════════════
+PILLARS — Hover to reveal detail
+═══════════════════════════════════════ */
+.pil-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(–sp-16);margin-top:var(–sp-48)}
+.pil{padding:var(–sp-32) var(–sp-24);border:1px solid var(–sep);border-radius:var(–r-lg);background:var(–surface-el);transition:all var(–dur-s) var(–ease);position:relative;overflow:hidden;cursor:pointer}
+.pil::after{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:var(–gold-grad);opacity:0;transition:opacity var(–dur-n) ease}
+.pil:hover,.pil.is-open{border-color:var(–b-gold-m);box-shadow:var(–sh-md)}
+.pil:hover::after,.pil.is-open::after{opacity:1}
+.pil__q{font-family:var(–f-d);font-size:var(–t-t1);font-weight:400;color:var(–gold-300);opacity:.22;line-height:1;margin-bottom:var(–sp-16);transition:opacity var(–dur-n) ease}
+.pil:hover .pil__q,.pil.is-open .pil__q{opacity:.45}
+.pil__nm{font-family:var(–f-d);font-size:var(–t-hl);font-weight:500;color:var(–text-1);line-height:1.3;margin-bottom:var(–sp-8)}
+.pil__desc{font-size:var(–t-cap);color:var(–text-3);line-height:1.7}
+/* Hidden detail revealed on hover/tap */
+.pil__detail{
+max-height:0;opacity:0;overflow:hidden;
+transition:max-height var(–dur-s) var(–ease),opacity var(–dur-n) ease,margin var(–dur-s) var(–ease);
+margin-top:0;
 }
-.group__header{
-padding:var(–sp-24) var(–sp-32);
-border-bottom:1px solid var(–separator);
-background:var(–surface-gold-wash);
+.pil:hover .pil__detail,.pil.is-open .pil__detail{
+max-height:200px;opacity:1;margin-top:var(–sp-16);
 }
-.group__header-label{
-font-family:var(–font-body);
-font-size:var(–type-micro);
-font-weight:700;
-letter-spacing:0.25em;
-text-transform:uppercase;
+.pil__detail-inner{
+padding-top:var(–sp-12);
+border-top:1px solid var(–sep);
+font-size:var(–t-cap);color:var(–text-3);line-height:1.7;
+}
+.pil__detail-tag{
+display:inline-block;
+padding:var(–sp-4) var(–sp-12);
+background:var(–surface-gw);
+border:1px solid var(–b-gold);
+border-radius:var(–r-full);
+font-size:var(–t-mic);
 color:var(–gold-500);
+font-weight:600;
+letter-spacing:.05em;
+margin-top:var(–sp-8);
 }
-.group__header-title{
-font-family:var(–font-display);
-font-size:var(–type-title3);
-font-weight:500;
-color:var(–text-primary);
-margin-top:var(–sp-4);
-}
-.group__body{
-padding:0;
-}
-.group__item{
-display:grid;
-grid-template-columns:1fr auto;
-align-items:start;
-gap:var(–sp-24);
+
+/* ═══════════════════════════════════════
+ACCORDION GROUPS — Value Stack
+═══════════════════════════════════════ */
+.stk{background:var(–surface-sec);border-top:1px solid var(–sep);border-bottom:1px solid var(–sep)}
+
+.acc{background:var(–surface-el);border:1px solid var(–sep);border-radius:var(–r-xl);overflow:hidden;box-shadow:var(–sh-sm);margin-bottom:var(–sp-24);transition:box-shadow var(–dur-n) var(–ease)}
+.acc.is-open{box-shadow:var(–sh-md)}
+
+/* Accordion header — clickable */
+.acc__hd{
+display:flex;align-items:center;justify-content:space-between;
 padding:var(–sp-24) var(–sp-32);
-border-bottom:1px solid var(–separator);
-transition:background var(–dur-fast) ease;
+cursor:pointer;
+transition:background var(–dur-f) ease;
+min-height:var(–tap);
+user-select:none;
+-webkit-user-select:none;
 }
-.group__item:last-child{border-bottom:none}
-.group__item:hover{background:var(–surface-gold-wash)}
-.group__item:active{background:var(–surface-gold-active)}
+.acc__hd:hover{background:var(–surface-gw)}
+.acc__hd:active{background:var(–surface-gh)}
 
-.group__item-num{
-font-family:var(–font-complement);
-font-size:var(–type-caption);
-font-weight:600;
-color:var(–gold-500);
-letter-spacing:0.1em;
-}
-.group__item-title{
-font-family:var(–font-display);
-font-size:var(–type-headline);
-font-weight:500;
-color:var(–text-primary);
-line-height:1.3;
-margin-top:var(–sp-2);
-}
-.group__item-desc{
-font-size:var(–type-caption);
-color:var(–text-tertiary);
-line-height:1.7;
-margin-top:var(–sp-4);
-max-width:480px;
-}
-
-.group__item-price{
-text-align:right;
-flex-shrink:0;
-min-width:110px;
-}
-.group__item-price-label{
-font-size:var(–type-micro);
-letter-spacing:0.18em;
-color:var(–text-quaternary);
-text-transform:uppercase;
-}
-.group__item-price-val{
-font-family:var(–font-display);
-font-size:var(–type-title3);
-font-weight:600;
-color:var(–gold-400);
-line-height:1;
-margin-top:var(–sp-2);
-}
-.group__item-price-note{
-font-size:var(–type-micro);
-color:var(–text-quaternary);
-margin-top:var(–sp-2);
-}
-
-/* Group total row */
-.group__total{
-padding:var(–sp-24) var(–sp-32);
-background:var(–surface-gold-wash);
-border-top:1px solid var(–border-gold);
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-.group__total-label{
-font-size:var(–type-caption);
-font-weight:700;
-color:var(–text-tertiary);
-letter-spacing:0.05em;
-}
-.group__total-val{
-font-family:var(–font-display);
-font-size:var(–type-title2);
-font-weight:600;
-color:var(–gold-400);
-}
-
-/* ══════════════════════════════════════════
-SCREEN 1: HERO
-══════════════════════════════════════════ */
-.hero{
-min-height:100vh;min-height:100dvh;
+.acc__hd-left{display:flex;align-items:center;gap:var(–sp-16)}
+.acc__hd-icon{
+width:36px;height:36px;
+border-radius:var(–r-sm);
+background:var(–surface-gw);
+border:1px solid var(–b-gold);
 display:flex;align-items:center;justify-content:center;
-text-align:center;
-padding:var(–sp-80) 0 var(–sp-64);
-overflow:hidden;
+font-size:14px;color:var(–gold-400);
+flex-shrink:0;
+transition:all var(–dur-n) var(–ease);
 }
-.hero::before{content:’’;position:absolute;top:-15%;left:50%;transform:translateX(-50%);width:640px;height:640px;background:radial-gradient(circle,rgba(196,163,42,0.05) 0%,transparent 65%);pointer-events:none}
+.acc.is-open .acc__hd-icon{background:var(–gold-400);color:#fff;border-color:var(–gold-400)}
 
-.hero__badge{display:inline-flex;align-items:center;gap:var(–sp-8);padding:var(–sp-12) var(–sp-24);border:1px solid var(–border-gold);border-radius:var(–radius-full);background:var(–surface-gold-wash);min-height:var(–tap-target);animation:heroEnter 0.9s var(–ease-spring) 0.1s both}
-.hero__badge-dot{width:5px;height:5px;border-radius:50%;background:var(–gold-400);animation:dotPulse 2.5s ease-in-out infinite}
+.acc__hd-info{}
+.acc__hd-label{font-size:var(–t-mic);font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(–gold-500)}
+.acc__hd-title{font-family:var(–f-d);font-size:var(–t-t3);font-weight:500;color:var(–text-1);margin-top:var(–sp-2)}
 
-.hero__logo{margin-top:var(–sp-40);animation:heroEnter 1s var(–ease-spring) 0.2s both}
-.hero__logo img{width:clamp(200px,28vw,300px);margin:0 auto;filter:drop-shadow(0 2px 8px rgba(196,163,42,0.06))}
+.acc__hd-right{display:flex;align-items:center;gap:var(–sp-16)}
+.acc__hd-val{font-family:var(–f-d);font-size:var(–t-t3);font-weight:600;color:var(–gold-400);text-align:right}
+.acc__hd-arrow{
+width:24px;height:24px;
+display:flex;align-items:center;justify-content:center;
+font-size:16px;color:var(–text-4);
+transition:transform var(–dur-s) var(–ease);
+}
+.acc.is-open .acc__hd-arrow{transform:rotate(180deg)}
 
-.hero__title{margin-top:var(–sp-32);animation:heroEnter 1s var(–ease-spring) 0.35s both}
+/* Accordion body — collapsible */
+.acc__bd{
+max-height:0;overflow:hidden;
+transition:max-height var(–dur-s) var(–ease);
+}
+.acc.is-open .acc__bd{max-height:800px}
+.acc__bd-inner{padding:0}
 
-.hero__sub{max-width:560px;margin:var(–sp-24) auto 0;animation:heroEnter 1s var(–ease-spring) 0.5s both}
-
-.hero__promise{max-width:640px;margin:var(–sp-40) auto 0;padding:var(–sp-32) var(–sp-40);border:1px solid var(–border-gold);border-radius:var(–radius-lg);background:var(–surface-gold-wash);animation:heroEnter 1s var(–ease-spring) 0.65s both}
-.hero__promise p{font-family:var(–font-complement);font-size:clamp(var(–type-body),1.8vw,var(–type-title3));font-style:italic;color:var(–text-secondary);line-height:1.8}
-.hero__promise strong{color:var(–gold-500);font-weight:600}
-
-.hero__scroll{position:absolute;bottom:var(–sp-40);left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:var(–sp-8);animation:heroEnter 1s var(–ease-spring) 1s both}
-.hero__scroll-line{width:1px;height:28px;background:linear-gradient(to bottom,var(–gold-300),transparent);animation:scrollLine 2.2s ease-in-out infinite}
-
-/* ══════════════════════════════════════════
-SCREEN 2: PROBLEM
-══════════════════════════════════════════ */
-.pain-item{display:flex;align-items:flex-start;gap:var(–sp-20);padding:var(–sp-20) var(–sp-24);border-radius:var(–radius-md);border:1px solid transparent;transition:all var(–dur-normal) var(–ease-spring)}
-.pain-item:hover{background:var(–surface-elevated);border-color:var(–separator);box-shadow:var(–shadow-xs)}
-.pain-item:active{transform:scale(0.997)}
-.pain-icon{flex-shrink:0;width:18px;margin-top:6px;color:var(–gold-400);font-size:7px}
-.pain-text{font-size:var(–type-body-lg);line-height:1.8;color:var(–text-secondary)}
-.pain-text strong{color:var(–text-primary);font-weight:400;font-family:var(–font-display)}
-
-/* ══════════════════════════════════════════
-SCREEN 3: PILLARS
-══════════════════════════════════════════ */
-.pillars-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(–sp-16);margin-top:var(–sp-48)}
-.pillar{padding:var(–sp-32) var(–sp-24);border:1px solid var(–separator);border-radius:var(–radius-lg);background:var(–surface-elevated);transition:all var(–dur-normal) var(–ease-spring);position:relative;overflow:hidden}
-.pillar::after{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:var(–gold-gradient);opacity:0;transition:opacity var(–dur-normal) ease}
-.pillar:hover{border-color:var(–border-gold);transform:translateY(-3px);box-shadow:var(–shadow-md)}
-.pillar:hover::after{opacity:1}
-.pillar:active{transform:translateY(-1px)}
-.pillar__q{font-family:var(–font-display);font-size:var(–type-title1);font-weight:400;color:var(–gold-300);opacity:0.22;line-height:1;margin-bottom:var(–sp-16)}
-.pillar__name{font-family:var(–font-display);font-size:var(–type-headline);font-weight:500;color:var(–text-primary);line-height:1.3;margin-bottom:var(–sp-12)}
-.pillar__desc{font-size:var(–type-caption);color:var(–text-tertiary);line-height:1.7}
-
-/* ══════════════════════════════════════════
-SCREEN 4: VALUE STACK (Grouped)
-══════════════════════════════════════════ */
-.stack-screen{background:var(–surface-secondary);border-top:1px solid var(–separator);border-bottom:1px solid var(–separator)}
+.acc__item{
+display:grid;grid-template-columns:1fr auto;align-items:start;gap:var(–sp-24);
+padding:var(–sp-20) var(–sp-32);
+border-top:1px solid var(–sep);
+transition:background var(–dur-f) ease;
+}
+.acc__item:hover{background:var(–surface-gw)}
+.acc__item-num{font-family:var(–f-c);font-size:var(–t-cap);font-weight:600;color:var(–gold-500);letter-spacing:.1em}
+.acc__item-title{font-family:var(–f-d);font-size:var(–t-hl);font-weight:500;color:var(–text-1);line-height:1.3;margin-top:var(–sp-2)}
+.acc__item-desc{font-size:var(–t-cap);color:var(–text-3);line-height:1.7;margin-top:var(–sp-4);max-width:460px}
+.acc__item-pr{text-align:right;flex-shrink:0;min-width:100px}
+.acc__item-pr-v{font-family:var(–f-d);font-size:var(–t-t3);font-weight:600;color:var(–gold-400);line-height:1}
+.acc__item-pr-n{font-size:var(–t-mic);color:var(–text-4);margin-top:var(–sp-2)}
 
 /* Grand total */
-.stack-grand{margin-top:var(–sp-48);padding:var(–sp-48);border:1px solid var(–border-gold-strong);border-radius:var(–radius-xl);background:var(–surface-gold-wash);text-align:center}
-.stack-grand__val{font-family:var(–font-display);font-size:clamp(var(–type-title1),5.5vw,var(–type-hero));font-weight:600;background:var(–gold-gradient-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
-.stack-grand__note{font-family:var(–font-complement);font-size:var(–type-body);color:var(–text-tertiary);margin-top:var(–sp-16);font-style:italic}
+.stk-total{margin-top:var(–sp-48);padding:var(–sp-48);border:1px solid var(–b-gold-s);border-radius:var(–r-xl);background:var(–surface-gw);text-align:center}
+.stk-total__v{font-family:var(–f-d);font-size:clamp(var(–t-t1),5.5vw,var(–t-hero));font-weight:600;background:var(–gold-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
+.stk-total__n{font-family:var(–f-c);font-size:var(–t-b);color:var(–text-3);margin-top:var(–sp-16);font-style:italic}
 
-/* ══════════════════════════════════════════
-SCREEN 5: FILTER
-══════════════════════════════════════════ */
-.filter-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(–sp-48);margin-top:var(–sp-48)}
-.filter-list{list-style:none}
-.filter-list__item{display:flex;align-items:flex-start;gap:var(–sp-16);padding:var(–sp-16) 0;font-size:var(–type-body);color:var(–text-secondary);line-height:1.7;border-bottom:1px solid var(–separator)}
-.filter-list__item:last-child{border-bottom:none}
-.filter-icon{flex-shrink:0;margin-top:6px;font-size:8px}
-.filter-icon–yes{color:var(–gold-400)}
-.filter-icon–no{color:var(–text-placeholder)}
-
-/* ══════════════════════════════════════════
-SCREEN 6: MENTOR
-══════════════════════════════════════════ */
-.mentor-screen{background:var(–surface-secondary);border-top:1px solid var(–separator);border-bottom:1px solid var(–separator)}
-.mentor-quote{font-family:var(–font-complement);font-size:clamp(var(–type-title3),2.4vw,var(–type-title2));font-style:italic;color:var(–text-secondary);line-height:1.65;padding-left:var(–sp-32);border-left:2px solid var(–gold-300);margin-top:var(–sp-40)}
-
-/* ══════════════════════════════════════════
-SCREEN 7: PRICING
-══════════════════════════════════════════ */
-.pricing-screen{text-align:center;padding:var(–sp-120) 0;position:relative}
-.pricing-screen::before{content:’’;position:absolute;top:25%;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(196,163,42,0.04) 0%,transparent 60%);pointer-events:none}
-.pricing-card{max-width:560px;margin:var(–sp-48) auto 0;padding:var(–sp-48) var(–sp-40);border:1px solid var(–border-gold-strong);border-radius:var(–radius-2xl);background:var(–surface-elevated);box-shadow:var(–shadow-gold);position:relative;z-index:1}
-
-/* Single anchor */
-.pricing-anchor{margin-bottom:var(–sp-40);padding-bottom:var(–sp-32);border-bottom:1px solid var(–separator)}
-.pricing-anchor__label{font-size:var(–type-micro);letter-spacing:0.2em;text-transform:uppercase;color:var(–text-quaternary)}
-.pricing-anchor__val{font-family:var(–font-display);font-size:var(–type-title2);font-weight:600;color:var(–text-placeholder);text-decoration:line-through;text-decoration-color:rgba(196,163,42,0.3);margin-top:var(–sp-4)}
-
-/* Blurred */
-.pricing-blurred{font-family:var(–font-display);font-size:clamp(var(–type-title1),5.5vw,var(–type-hero));font-weight:700;line-height:1;color:var(–gold-300);filter:blur(14px);user-select:none;pointer-events:none}
-.pricing-hint{font-family:var(–font-complement);font-size:var(–type-caption);color:var(–text-quaternary);font-style:italic;margin-top:var(–sp-16)}
-.pricing-note{font-size:var(–type-body);color:var(–text-tertiary);margin-top:var(–sp-32);line-height:1.8}
-.pricing-note strong{color:var(–gold-500);font-weight:700}
-
-/* ══════════════════════════════════════════
-CTA BUTTON
-══════════════════════════════════════════ */
-.btn-primary{
-display:inline-flex;align-items:center;justify-content:center;gap:var(–sp-12);
-min-height:var(–tap-target);
-padding:var(–sp-20) var(–sp-48);
-background:var(–gold-gradient-btn);
-color:#FFFFFF;
-font-family:var(–font-body);
-font-size:var(–type-caption);
-font-weight:700;
-letter-spacing:0.22em;
-text-transform:uppercase;
-border-radius:var(–radius-md);
-text-decoration:none;
-position:relative;overflow:hidden;
-transition:all var(–dur-normal) var(–ease-spring);
-text-shadow:0 1px 2px rgba(0,0,0,0.1);
-box-shadow:var(–shadow-sm);
+/* ═══════════════════════════════════════
+FILTER — Tab Switcher
+═══════════════════════════════════════ */
+.tabs{display:flex;gap:var(–sp-8);margin-top:var(–sp-40);justify-content:center}
+.tab-btn{
+padding:var(–sp-12) var(–sp-32);
+border-radius:var(–r-full);
+font-size:var(–t-cap);font-weight:700;
+letter-spacing:.08em;
+border:1px solid var(–sep-s);
+background:var(–surface-el);
+color:var(–text-3);
+transition:all var(–dur-n) var(–ease);
+min-height:var(–tap);
+cursor:pointer;
 }
-.btn-primary::after{content:’’;position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.5s ease}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:var(–shadow-gold-lg)}
-.btn-primary:hover::after{left:100%}
-.btn-primary:active{transform:translateY(0) scale(0.97);box-shadow:var(–shadow-xs)}
-.btn-arrow{transition:transform var(–dur-normal) var(–ease-spring);font-size:var(–type-body)}
-.btn-primary:hover .btn-arrow{transform:translateX(4px)}
+.tab-btn:hover{border-color:var(–b-gold);background:var(–surface-gw)}
+.tab-btn.act{background:var(–gold-400);color:#fff;border-color:var(–gold-400);box-shadow:var(–sh-gold)}
 
-.cta-wrap{margin-top:var(–sp-48)}
-.cta-meta{font-size:var(–type-micro);color:var(–text-quaternary);margin-top:var(–sp-16);letter-spacing:0.05em}
+.tab-panel{display:none;margin-top:var(–sp-32);max-width:640px;margin-left:auto;margin-right:auto;text-align:left}
+.tab-panel.act{display:block;animation:fadeIn var(–dur-s) var(–ease) both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-/* ══════════════════════════════════════════
-SCREEN 8: FINAL
-══════════════════════════════════════════ */
-.final{text-align:center;padding-bottom:var(–sp-120)}
-.final-quote{font-family:var(–font-complement);font-size:clamp(var(–type-title3),2.8vw,var(–type-title2));font-weight:400;font-style:italic;color:var(–text-secondary);max-width:600px;margin:0 auto;line-height:1.55}
-.final-quote strong{color:var(–gold-500);font-weight:600}
+.fl{list-style:none}
+.fl__i{display:flex;align-items:flex-start;gap:var(–sp-16);padding:var(–sp-16) 0;font-size:var(–t-b);color:var(–text-2);line-height:1.7;border-bottom:1px solid var(–sep)}
+.fl__i:last-child{border-bottom:none}
+.fl__ic{flex-shrink:0;margin-top:6px;font-size:8px}
+.fl__ic–y{color:var(–gold-400)}.fl__ic–n{color:var(–text-5)}
 
-/* Footer */
-footer{padding:var(–sp-40) 0;padding-bottom:calc(var(–sp-40) + var(–safe-bottom));text-align:center;border-top:1px solid var(–separator)}
+/* ═══════════════════════════════════════
+MENTOR
+═══════════════════════════════════════ */
+.ment{background:var(–surface-sec);border-top:1px solid var(–sep);border-bottom:1px solid var(–sep)}
+.ment-q{font-family:var(–f-c);font-size:clamp(var(–t-t3),2.4vw,var(–t-t2));font-style:italic;color:var(–text-2);line-height:1.65;padding-left:var(–sp-32);border-left:2px solid var(–gold-300);margin-top:var(–sp-40)}
 
-/* ══════════════════════════════════════════
+/* ═══════════════════════════════════════
+PRICING — Interactive blur tease
+═══════════════════════════════════════ */
+.prc{text-align:center;padding:var(–sp-120) 0;position:relative}
+.prc::before{content:’’;position:absolute;top:25%;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(196,163,42,.04) 0%,transparent 60%);pointer-events:none}
+.prc-card{max-width:560px;margin:var(–sp-48) auto 0;padding:var(–sp-48) var(–sp-40);border:1px solid var(–b-gold-s);border-radius:var(–r-2xl);background:var(–surface-el);box-shadow:var(–sh-gold);position:relative;z-index:1}
+
+.prc-anc{margin-bottom:var(–sp-40);padding-bottom:var(–sp-32);border-bottom:1px solid var(–sep)}
+.prc-anc__lb{font-size:var(–t-mic);letter-spacing:.2em;text-transform:uppercase;color:var(–text-4)}
+.prc-anc__v{font-family:var(–f-d);font-size:var(–t-t2);font-weight:600;color:var(–text-5);text-decoration:line-through;text-decoration-color:rgba(196,163,42,.3);margin-top:var(–sp-4)}
+
+/* Interactive blur — mouse approach teases reveal */
+.prc-blur-zone{
+position:relative;
+padding:var(–sp-24) 0;
+cursor:pointer;
+border-radius:var(–r-md);
+transition:background var(–dur-n) ease;
+}
+.prc-blur-zone:hover{background:var(–surface-gw)}
+.prc-blur-zone:active{background:var(–surface-ga)}
+
+.prc-blur{
+font-family:var(–f-d);
+font-size:clamp(var(–t-t1),5.5vw,var(–t-hero));
+font-weight:700;line-height:1;
+color:var(–gold-300);
+filter:blur(14px);
+user-select:none;pointer-events:none;
+transition:filter var(–dur-s) var(–ease);
+}
+/* On hover: blur slightly reduces (teases but doesn’t reveal) */
+.prc-blur-zone:hover .prc-blur{filter:blur(10px)}
+.prc-blur-zone:active .prc-blur{filter:blur(8px)}
+
+.prc-blur-tip{
+position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);
+padding:var(–sp-8) var(–sp-16);
+background:var(–text-1);color:#fff;
+font-size:var(–t-mic);font-weight:600;
+border-radius:var(–r-sm);
+opacity:0;
+transition:opacity var(–dur-n) ease,transform var(–dur-n) var(–ease);
+transform:translateX(-50%) translateY(4px);
+white-space:nowrap;
+pointer-events:none;
+}
+.prc-blur-zone:hover .prc-blur-tip{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.prc-hint{font-family:var(–f-c);font-size:var(–t-cap);color:var(–text-4);font-style:italic;margin-top:var(–sp-20)}
+.prc-note{font-size:var(–t-b);color:var(–text-3);margin-top:var(–sp-32);line-height:1.8}
+.prc-note strong{color:var(–gold-500);font-weight:700}
+
+/* ═══════════════════════════════════════
+CTA BUTTON
+═══════════════════════════════════════ */
+.btn{
+display:inline-flex;align-items:center;justify-content:center;gap:var(–sp-12);
+min-height:var(–tap);padding:var(–sp-20) var(–sp-48);
+background:var(–gold-btn);color:#fff;
+font-family:var(–f-b);font-size:var(–t-cap);font-weight:700;
+letter-spacing:.22em;text-transform:uppercase;
+border-radius:var(–r-md);text-decoration:none;
+position:relative;overflow:hidden;
+transition:all var(–dur-n) var(–ease);
+text-shadow:0 1px 2px rgba(0,0,0,.1);box-shadow:var(–sh-sm);
+}
+.btn::after{content:’’;position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transition:left .5s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:var(–sh-gold-lg)}
+.btn:hover::after{left:100%}
+.btn:active{transform:translateY(0) scale(.97);box-shadow:var(–sh-xs)}
+.btn__ar{transition:transform var(–dur-n) var(–ease);font-size:var(–t-b)}
+.btn:hover .btn__ar{transform:translateX(4px)}
+.cta-w{margin-top:var(–sp-48)}
+.cta-m{font-size:var(–t-mic);color:var(–text-4);margin-top:var(–sp-16);letter-spacing:.05em}
+
+/* Final */
+.fin{text-align:center;padding-bottom:var(–sp-120)}
+.fin-q{font-family:var(–f-c);font-size:clamp(var(–t-t3),2.8vw,var(–t-t2));font-weight:400;font-style:italic;color:var(–text-2);max-width:600px;margin:0 auto;line-height:1.55}
+.fin-q strong{color:var(–gold-500);font-weight:600}
+footer{padding:var(–sp-40) 0;padding-bottom:calc(var(–sp-40) + var(–safe));text-align:center;border-top:1px solid var(–sep)}
+
+/* ═══════════════════════════════════════
 RESPONSIVE
-══════════════════════════════════════════ */
+═══════════════════════════════════════ */
 @media(max-width:768px){
-.pillars-grid{grid-template-columns:1fr}
-.filter-grid{grid-template-columns:1fr;gap:var(–sp-32)}
-.group__item{grid-template-columns:1fr;gap:var(–sp-12)}
-.group__item-price{text-align:left;min-width:auto}
-.group__total{flex-direction:column;gap:var(–sp-8);align-items:flex-start}
-.screen{padding:var(–sp-64) 0}
-.sec-nav{display:none}
-.hero__promise{padding:var(–sp-24) var(–sp-24)}
-.group__header{padding:var(–sp-20) var(–sp-24)}
-.group__item{padding:var(–sp-20) var(–sp-24)}
-.group__total{padding:var(–sp-20) var(–sp-24)}
+.pil-grid{grid-template-columns:1fr}
+.acc__item{grid-template-columns:1fr;gap:var(–sp-12)}
+.acc__item-pr{text-align:left;min-width:auto}
+.acc__hd{padding:var(–sp-20) var(–sp-24)}
+.acc__item{padding:var(–sp-16) var(–sp-24)}
+.scr{padding:var(–sp-64) 0}
+.snav{display:none}
+.hero__pr{padding:var(–sp-24)}
+.tabs{flex-wrap:wrap}
+.prc-card{padding:var(–sp-32) var(–sp-20)}
+.acc__hd-val{display:none}
 }
 @media(max-width:480px){
-.container{padding:0 var(–sp-16)}
-.btn-primary{padding:var(–sp-16) var(–sp-32);font-size:var(–type-micro)}
-.pricing-card{padding:var(–sp-32) var(–sp-20)}
+.con{padding:0 var(–sp-16)}
+.btn{padding:var(–sp-16) var(–sp-32);font-size:var(–t-mic)}
 }
-@media(min-width:1200px){
-.container{padding:0 var(–sp-40)}
-}
+@media(min-width:1200px){.con{padding:0 var(–sp-40)}}
 </style>
 
 </head>
 <body>
 
-<a href="#main" class="skip-link">Pular para o conteúdo principal</a>
+<a href="#main" class="skip">Pular para o conteúdo principal</a>
 
-<div class="scroll-progress" role="presentation" aria-hidden="true"></div>
+<div class="spb" role="presentation" aria-hidden="true"></div>
 
-<nav class="sec-nav" aria-label="Navegação por seção">
-  <button class="sec-nav__dot is-active" data-target="hero" aria-label="Início"></button>
-  <button class="sec-nav__dot" data-target="problem" aria-label="O Problema"></button>
-  <button class="sec-nav__dot" data-target="pillars" aria-label="Pilares"></button>
-  <button class="sec-nav__dot" data-target="stack" aria-label="Valor incluído"></button>
-  <button class="sec-nav__dot" data-target="filter" aria-label="Para quem"></button>
-  <button class="sec-nav__dot" data-target="mentor" aria-label="Mentora"></button>
-  <button class="sec-nav__dot" data-target="pricing" aria-label="Investimento"></button>
-  <button class="sec-nav__dot" data-target="close" aria-label="Aplicar"></button>
+<nav class="snav" aria-label="Navegação">
+  <button class="snav__d act" data-t="hero" aria-label="Início"></button>
+  <button class="snav__d" data-t="problem" aria-label="Problema"></button>
+  <button class="snav__d" data-t="pillars" aria-label="Pilares"></button>
+  <button class="snav__d" data-t="stack" aria-label="Incluído"></button>
+  <button class="snav__d" data-t="filter" aria-label="Filtro"></button>
+  <button class="snav__d" data-t="mentor" aria-label="Mentora"></button>
+  <button class="snav__d" data-t="pricing" aria-label="Investimento"></button>
+  <button class="snav__d" data-t="close" aria-label="Aplicar"></button>
 </nav>
 
 <main id="main">
 
-  <!-- ═══ SCREEN 1: HERO ═══ -->
+  <!-- ═══ 1. HERO ═══ -->
 
-  <section class="hero screen" id="hero" aria-labelledby="hero-h">
-    <div class="container center">
-      <div class="hero__badge">
-        <span class="hero__badge-dot" aria-hidden="true"></span>
-        <span class="overline">Inscrições por Aplicação</span>
-      </div>
-      <div class="hero__logo">
-        <img src="logo-alianca.png" alt="ALIANÇA — Mastermind Feminino" width="300" height="300">
-      </div>
-      <div class="hero__title">
-        <h1 id="hero-h" class="t-display"><em>Mastermind de Liderança<br>Inabalável</em></h1>
-      </div>
-      <p class="t-body-lg hero__sub">Um pacto sagrado entre mulheres que decidiram parar de liderar sozinhas — e passaram a reinar juntas.</p>
-      <div class="hero__promise">
-        <p>"Desbloqueie a <strong>liderança inabalável</strong> que já existe em você. Multiplique resultado e influência <strong>agora</strong> — sem sacrificar sua fé ou sua paz."</p>
-      </div>
-      <div class="hero__scroll" aria-hidden="true">
-        <span class="t-micro" style="color:var(--text-quaternary)">Descubra</span>
-        <div class="hero__scroll-line"></div>
-      </div>
+  <section class="hero scr" id="hero" aria-labelledby="hh">
+    <div class="con center">
+      <div class="hero__b"><span class="hero__bd" aria-hidden="true"></span><span class="over">Inscrições por Aplicação</span></div>
+      <div class="hero__logo"><img src="https://res.cloudinary.com/dlzrfhwin/image/upload/v1775246801/C6565E9C-7F6C-44EB-AB9C-7AC008C98881_yvw16e.png" alt="ALIANÇA — Mastermind Feminino" width="300" height="300"></div>
+      <div class="hero__title"><h1 id="hh" class="t-disp"><em>Mastermind de Liderança<br>Inabalável</em></h1></div>
+      <p class="t-bl hero__sub">Um pacto sagrado entre mulheres que decidiram parar de liderar sozinhas — e passaram a reinar juntas.</p>
+      <div class="hero__pr"><p>"Desbloqueie a <strong>liderança inabalável</strong> que já existe em você. Multiplique resultado e influência <strong>agora</strong> — sem sacrificar sua fé ou sua paz."</p></div>
+      <div class="hero__sc" aria-hidden="true"><span class="t-mic" style="color:var(--text-4)">Descubra</span><div class="hero__scl"></div></div>
     </div>
   </section>
 
   <hr class="sep" aria-hidden="true">
 
-  <!-- ═══ SCREEN 2: PROBLEM ═══ -->
+  <!-- ═══ 2. PROBLEM ═══ -->
 
-  <section class="screen" id="problem" aria-labelledby="problem-h">
-    <div class="container">
-      <span class="overline reveal">A Verdade Que Ninguém Fala</span>
-      <hr class="gold-rule gold-rule--left reveal d1" aria-hidden="true">
-      <h2 id="problem-h" class="t-title1 reveal d1" style="max-width:700px;">
-        Você não tem um problema de <em>competência</em>.<br>
-        Você tem um problema de <span class="text-gold-solid">solidão estratégica</span>.
-      </h2>
+  <section class="scr" id="problem" aria-labelledby="ph">
+    <div class="con">
+      <span class="over reveal">A Verdade Que Ninguém Fala</span>
+      <hr class="gr gr-l reveal d1" aria-hidden="true">
+      <h2 id="ph" class="t-t1 reveal d1" style="max-width:700px;">Você não tem um problema de <em>competência</em>.<br>Você tem um problema de <span class="tgs">solidão estratégica</span>.</h2>
       <div style="margin-top:var(--sp-48);display:grid;gap:var(--sp-8);">
-        <div class="pain-item reveal d1">
-          <div class="pain-icon" aria-hidden="true">◆</div>
-          <p class="pain-text">Você <strong>fatura</strong>, lidera e inspira — mas no final do dia, as decisões pesam porque não existe um círculo à altura da sua jornada.</p>
-        </div>
-        <div class="pain-item reveal d2">
-          <div class="pain-icon" aria-hidden="true">◆</div>
-          <p class="pain-text">Você <strong>cresce</strong>, mas o crescimento cobra um preço silencioso: estresse, desconexão espiritual, sensação de que a coroa pesa mais do que deveria.</p>
-        </div>
-        <div class="pain-item reveal d3">
-          <div class="pain-icon" aria-hidden="true">◆</div>
-          <p class="pain-text">Você já investiu em cursos, coaches, eventos — e mesmo assim, falta o <strong>ambiente</strong> que combina visão, fé, estratégia e acompanhamento real.</p>
-        </div>
-        <div class="pain-item reveal d4">
-          <div class="pain-icon" aria-hidden="true">◆</div>
-          <p class="pain-text">Você sabe que pode mais. Mas precisa de uma <strong>ALIANÇA</strong> — não de mais conteúdo.</p>
-        </div>
+        <div class="pain reveal d1"><div class="pain__ic" aria-hidden="true">◆</div><p class="pain__tx">Você <strong>fatura</strong>, lidera e inspira — mas no final do dia, as decisões pesam porque não existe um círculo à altura da sua jornada.</p></div>
+        <div class="pain reveal d2"><div class="pain__ic" aria-hidden="true">◆</div><p class="pain__tx">Você <strong>cresce</strong>, mas o crescimento cobra um preço silencioso: estresse, desconexão espiritual, sensação de que a coroa pesa mais do que deveria.</p></div>
+        <div class="pain reveal d3"><div class="pain__ic" aria-hidden="true">◆</div><p class="pain__tx">Você já investiu em cursos, coaches, eventos — e mesmo assim, falta o <strong>ambiente</strong> que combina visão, fé, estratégia e acompanhamento real.</p></div>
+        <div class="pain reveal d4"><div class="pain__ic" aria-hidden="true">◆</div><p class="pain__tx">Você sabe que pode mais. Mas precisa de uma <strong>ALIANÇA</strong> — não de mais conteúdo.</p></div>
       </div>
     </div>
   </section>
 
   <hr class="sep" aria-hidden="true">
 
-  <!-- ═══ SCREEN 3: PILLARS ═══ -->
+  <!-- ═══ 3. PILLARS — Hover to reveal ═══ -->
 
-  <section class="screen" id="pillars" aria-labelledby="pillars-h">
-    <div class="container center">
-      <span class="overline reveal">A Jornada de 12 Meses</span>
-      <hr class="gold-rule gold-rule--center reveal d1" aria-hidden="true">
-      <h2 id="pillars-h" class="t-title1 reveal d1">Quatro pilares. Um ano de <span class="text-gold">transformação</span>.</h2>
-      <div class="pillars-grid" role="list">
-        <article class="pillar reveal d1" role="listitem">
-          <div class="pillar__q" aria-hidden="true">T1</div>
-          <h3 class="pillar__name">Ativação da Essência</h3>
-          <p class="pillar__desc">Identidade em Deus, cura emocional, autoconhecimento. A base que sustenta tudo o que vem depois.</p>
+  <section class="scr" id="pillars" aria-labelledby="plh">
+    <div class="con center">
+      <span class="over reveal">A Jornada de 12 Meses</span>
+      <hr class="gr gr-c reveal d1" aria-hidden="true">
+      <h2 id="plh" class="t-t1 reveal d1">Quatro pilares. Um ano de <span class="tg">transformação</span>.</h2>
+      <p class="t-bl reveal d2" style="max-width:520px;margin:var(--sp-16) auto 0;color:var(--text-3)">Passe o mouse ou toque para explorar cada pilar.</p>
+      <div class="pil-grid" role="list">
+        <article class="pil reveal d1" role="listitem" tabindex="0">
+          <div class="pil__q" aria-hidden="true">T1</div>
+          <h3 class="pil__nm">Ativação da Essência</h3>
+          <p class="pil__desc">Identidade em Deus, cura emocional, autoconhecimento.</p>
+          <div class="pil__detail"><div class="pil__detail-inner">Reconexão com a nobreza e fidelidade intrínsecas. Journaling, meditações guiadas, exercícios de perdão e manifesto pessoal.<span class="pil__detail-tag">Meses 1–3</span></div></div>
         </article>
-        <article class="pillar reveal d2" role="listitem">
-          <div class="pillar__q" aria-hidden="true">T2</div>
-          <h3 class="pillar__name">Estratégia Alinhada</h3>
-          <p class="pillar__desc">Planejamento, execução consciente, comunicação autêntica e branding pessoal com propósito.</p>
+        <article class="pil reveal d2" role="listitem" tabindex="0">
+          <div class="pil__q" aria-hidden="true">T2</div>
+          <h3 class="pil__nm">Estratégia Alinhada</h3>
+          <p class="pil__desc">Planejamento, execução consciente, comunicação autêntica.</p>
+          <div class="pil__detail"><div class="pil__detail-inner">Fidelidade à estratégia e nobreza da execução. Templates de planejamento, workshops de branding pessoal e pitch de impacto.<span class="pil__detail-tag">Meses 4–6</span></div></div>
         </article>
-        <article class="pillar reveal d3" role="listitem">
-          <div class="pillar__q" aria-hidden="true">T3</div>
-          <h3 class="pillar__name">Multiplicação & Influência</h3>
-          <p class="pillar__desc">Liderança servidora, finanças com propósito, networking estratégico. Impacto que se multiplica.</p>
+        <article class="pil reveal d3" role="listitem" tabindex="0">
+          <div class="pil__q" aria-hidden="true">T3</div>
+          <h3 class="pil__nm">Multiplicação & Influência</h3>
+          <p class="pil__desc">Liderança servidora, finanças com propósito, networking.</p>
+          <div class="pil__detail"><div class="pil__detail-inner">Expansão da ALIANÇA para o coletivo. Ferramentas de feedback, guias de investimento alinhado e sessões de speed networking.<span class="pil__detail-tag">Meses 7–9</span></div></div>
         </article>
-        <article class="pillar reveal d4" role="listitem">
-          <div class="pillar__q" aria-hidden="true">T4</div>
-          <h3 class="pillar__name">Renovação & Expansão</h3>
-          <p class="pillar__desc">Inovação, bem-estar integral, visão de futuro. Consolidar e preparar o próximo ciclo.</p>
+        <article class="pil reveal d4" role="listitem" tabindex="0">
+          <div class="pil__q" aria-hidden="true">T4</div>
+          <h3 class="pil__nm">Renovação & Expansão</h3>
+          <p class="pil__desc">Inovação, bem-estar integral, visão de futuro.</p>
+          <div class="pil__detail"><div class="pil__detail-inner">Fidelidade ao bem-estar e nobreza da visão contínua. Workshops de inovação, mindfulness e cerimônia de encerramento.<span class="pil__detail-tag">Meses 10–12</span></div></div>
         </article>
       </div>
     </div>
@@ -607,328 +470,280 @@ RESPONSIVE
 
   <hr class="sep" aria-hidden="true">
 
-  <!-- ═══ SCREEN 4: VALUE STACK (GROUPED) ═══ -->
+  <!-- ═══ 4. VALUE STACK — Accordions ═══ -->
 
-  <section class="screen stack-screen" id="stack" aria-labelledby="stack-h">
-    <div class="container">
+  <section class="scr stk" id="stack" aria-labelledby="sth">
+    <div class="con">
       <div class="center" style="margin-bottom:var(--sp-56);">
-        <span class="overline reveal">O Que Está Incluído</span>
-        <hr class="gold-rule gold-rule--center reveal d1" aria-hidden="true">
-        <h2 id="stack-h" class="t-title1 reveal d1">Tudo que você recebe ao<br>entrar na <span class="text-gold">ALIANÇA</span></h2>
-        <p class="t-body-lg reveal d2" style="max-width:560px;margin:var(--sp-24) auto 0;">Se você contratasse cada componente separadamente, o investimento seria este:</p>
+        <span class="over reveal">O Que Está Incluído</span>
+        <hr class="gr gr-c reveal d1" aria-hidden="true">
+        <h2 id="sth" class="t-t1 reveal d1">Tudo que você recebe ao<br>entrar na <span class="tg">ALIANÇA</span></h2>
+        <p class="t-bl reveal d2" style="max-width:560px;margin:var(--sp-24) auto 0;">Toque em cada grupo para ver o detalhamento completo.</p>
       </div>
 
 ```
-  <!-- GROUP 1: Mentoria & Acompanhamento -->
-  <div class="group reveal" style="margin-bottom:var(--sp-24);">
-    <div class="group__header">
-      <div class="group__header-label">Mentoria & Acompanhamento</div>
-      <div class="group__header-title">O coração da ALIANÇA</div>
+  <!-- Accordion 1 -->
+  <div class="acc reveal" data-acc>
+    <div class="acc__hd" role="button" aria-expanded="false" tabindex="0">
+      <div class="acc__hd-left">
+        <div class="acc__hd-icon">♛</div>
+        <div class="acc__hd-info">
+          <div class="acc__hd-label">Mentoria & Acompanhamento</div>
+          <div class="acc__hd-title">O coração da ALIANÇA</div>
+        </div>
+      </div>
+      <div class="acc__hd-right">
+        <div class="acc__hd-val">R$ 65.000</div>
+        <div class="acc__hd-arrow">▾</div>
+      </div>
     </div>
-    <div class="group__body">
-      <div class="group__item">
-        <div>
-          <div class="group__item-num">01</div>
-          <div class="group__item-title">12 Mentorias em Grupo ao Vivo</div>
-          <div class="group__item-desc">Sessões mensais de 2 horas com Patricia Leal. Q&A direto, estudo de caso, direcionamento estratégico personalizado.</div>
+    <div class="acc__bd" aria-hidden="true">
+      <div class="acc__bd-inner">
+        <div class="acc__item">
+          <div><div class="acc__item-num">01</div><div class="acc__item-title">12 Mentorias em Grupo ao Vivo</div><div class="acc__item-desc">Sessões mensais de 2h com Patricia Leal. Q&A, estudo de caso, direcionamento personalizado.</div></div>
+          <div class="acc__item-pr"><div class="acc__item-pr-v">R$ 36.000</div><div class="acc__item-pr-n">R$ 3.000/sessão</div></div>
         </div>
-        <div class="group__item-price">
-          <div class="group__item-price-label">Valor</div>
-          <div class="group__item-price-val">R$ 36.000</div>
-          <div class="group__item-price-note">R$ 3.000/sessão</div>
+        <div class="acc__item">
+          <div><div class="acc__item-num">02</div><div class="acc__item-title">24 Sessões de Ativação & Foco</div><div class="acc__item-desc">Encontros quinzenais de 1h ao vivo. Exercícios, metas e celebração de vitórias.</div></div>
+          <div class="acc__item-pr"><div class="acc__item-pr-v">R$ 24.000</div><div class="acc__item-pr-n">R$ 1.000/sessão</div></div>
         </div>
-      </div>
-      <div class="group__item">
-        <div>
-          <div class="group__item-num">02</div>
-          <div class="group__item-title">24 Sessões de Ativação & Foco</div>
-          <div class="group__item-desc">Encontros quinzenais de 1 hora ao vivo. Exercícios práticos, ativação de propósito, metas e celebração de vitórias.</div>
+        <div class="acc__item">
+          <div><div class="acc__item-num">03</div><div class="acc__item-title">Onboarding Premium & Acompanhamento</div><div class="acc__item-desc">Boas-vindas personalizada, mapeamento individual, progresso trimestral e ajuste de rota.</div></div>
+          <div class="acc__item-pr"><div class="acc__item-pr-v">R$ 5.000</div><div class="acc__item-pr-n">Personalizado</div></div>
         </div>
-        <div class="group__item-price">
-          <div class="group__item-price-label">Valor</div>
-          <div class="group__item-price-val">R$ 24.000</div>
-          <div class="group__item-price-note">R$ 1.000/sessão</div>
-        </div>
-      </div>
-      <div class="group__item">
-        <div>
-          <div class="group__item-num">03</div>
-          <div class="group__item-title">Onboarding Premium & Acompanhamento</div>
-          <div class="group__item-desc">Boas-vindas personalizada, mapeamento individual, progresso trimestral e ajuste de rota. Ninguém fica para trás.</div>
-        </div>
-        <div class="group__item-price">
-          <div class="group__item-price-label">Valor</div>
-          <div class="group__item-price-val">R$ 5.000</div>
-          <div class="group__item-price-note">Personalizado</div>
-        </div>
-      </div>
-      <div class="group__total">
-        <span class="group__total-label">Subtotal Mentoria</span>
-        <span class="group__total-val">R$ 65.000</span>
       </div>
     </div>
   </div>
 
-  <!-- GROUP 2: Conteúdo & Comunidade -->
-  <div class="group reveal" style="margin-bottom:var(--sp-24);">
-    <div class="group__header">
-      <div class="group__header-label">Conteúdo & Comunidade</div>
-      <div class="group__header-title">Conhecimento e pertencimento</div>
+  <!-- Accordion 2 -->
+  <div class="acc reveal" data-acc>
+    <div class="acc__hd" role="button" aria-expanded="false" tabindex="0">
+      <div class="acc__hd-left">
+        <div class="acc__hd-icon">◈</div>
+        <div class="acc__hd-info">
+          <div class="acc__hd-label">Conteúdo & Comunidade</div>
+          <div class="acc__hd-title">Conhecimento e pertencimento</div>
+        </div>
+      </div>
+      <div class="acc__hd-right">
+        <div class="acc__hd-val">R$ 30.000</div>
+        <div class="acc__hd-arrow">▾</div>
+      </div>
     </div>
-    <div class="group__body">
-      <div class="group__item">
-        <div>
-          <div class="group__item-num">04</div>
-          <div class="group__item-title">Biblioteca Essencial — Aulas por Pilar</div>
-          <div class="group__item-desc">Conteúdo gravado organizado por Identidade, Cura, Estratégia, Impacto e Inovação. Consulta permanente.</div>
+    <div class="acc__bd" aria-hidden="true">
+      <div class="acc__bd-inner">
+        <div class="acc__item">
+          <div><div class="acc__item-num">04</div><div class="acc__item-title">Biblioteca Essencial — Aulas por Pilar</div><div class="acc__item-desc">Conteúdo gravado organizado por Identidade, Cura, Estratégia, Impacto e Inovação.</div></div>
+          <div class="acc__item-pr"><div class="acc__item-pr-v">R$ 12.000</div><div class="acc__item-pr-n">Acesso vitalício</div></div>
         </div>
-        <div class="group__item-price">
-          <div class="group__item-price-label">Valor</div>
-          <div class="group__item-price-val">R$ 12.000</div>
-          <div class="group__item-price-note">Acesso vitalício</div>
+        <div class="acc__item">
+          <div><div class="acc__item-num">05</div><div class="acc__item-title">Comunidade Exclusiva + Acesso à Mentora</div><div class="acc__item-desc">Plataforma diária de interação, networking, suporte direto de Patricia. Pertencimento real.</div></div>
+          <div class="acc__item-pr"><div class="acc__item-pr-v">R$ 18.000</div><div class="acc__item-pr-n">R$ 1.500/mês</div></div>
         </div>
-      </div>
-      <div class="group__item">
-        <div>
-          <div class="group__item-num">05</div>
-          <div class="group__item-title">Comunidade Exclusiva + Acesso à Mentora</div>
-          <div class="group__item-desc">Plataforma diária de interação, networking entre participantes, suporte direto de Patricia. Pertencimento real.</div>
-        </div>
-        <div class="group__item-price">
-          <div class="group__item-price-label">Valor</div>
-          <div class="group__item-price-val">R$ 18.000</div>
-          <div class="group__item-price-note">R$ 1.500/mês</div>
-        </div>
-      </div>
-      <div class="group__total">
-        <span class="group__total-label">Subtotal Conteúdo</span>
-        <span class="group__total-val">R$ 30.000</span>
       </div>
     </div>
   </div>
 
-  <!-- GROUP 3: Ferramentas & Rituais -->
-  <div class="group reveal" style="margin-bottom:var(--sp-24);">
-    <div class="group__header">
-      <div class="group__header-label">Ferramentas & Rituais</div>
-      <div class="group__header-title">Disciplina que transforma</div>
+  <!-- Accordion 3 -->
+  <div class="acc reveal" data-acc>
+    <div class="acc__hd" role="button" aria-expanded="false" tabindex="0">
+      <div class="acc__hd-left">
+        <div class="acc__hd-icon">✦</div>
+        <div class="acc__hd-info">
+          <div class="acc__hd-label">Ferramentas & Rituais</div>
+          <div class="acc__hd-title">Disciplina que transforma</div>
+        </div>
+      </div>
+      <div class="acc__hd-right">
+        <div class="acc__hd-val">R$ 14.000</div>
+        <div class="acc__hd-arrow">▾</div>
+      </div>
     </div>
-    <div class="group__body">
-      <div class="group__item">
-        <div>
-          <div class="group__item-num">06</div>
-          <div class="group__item-title">52 Rituais Semanais de Ativação</div>
-          <div class="group__item-desc">Journaling guiado, meditações, desafios práticos e prompts de reflexão para cada semana do ano.</div>
+    <div class="acc__bd" aria-hidden="true">
+      <div class="acc__bd-inner">
+        <div class="acc__item">
+          <div><div class="acc__item-num">06</div><div class="acc__item-title">52 Rituais Semanais de Ativação</div><div class="acc__item-desc">Journaling guiado, meditações, desafios práticos e prompts para cada semana do ano.</div></div>
+          <div class="acc__item-pr"><div class="acc__item-pr-v">R$ 6.000</div><div class="acc__item-pr-n">52 entregas</div></div>
         </div>
-        <div class="group__item-price">
-          <div class="group__item-price-label">Valor</div>
-          <div class="group__item-price-val">R$ 6.000</div>
-          <div class="group__item-price-note">52 entregas</div>
+        <div class="acc__item">
+          <div><div class="acc__item-num">07</div><div class="acc__item-title">Kit Completo de Ferramentas & Templates</div><div class="acc__item-desc">Worksheets, checklists, planilhas, roteiros, canvas de inovação. +40 ferramentas prontas.</div></div>
+          <div class="acc__item-pr"><div class="acc__item-pr-v">R$ 8.000</div><div class="acc__item-pr-n">+40 ferramentas</div></div>
         </div>
-      </div>
-      <div class="group__item">
-        <div>
-          <div class="group__item-num">07</div>
-          <div class="group__item-title">Kit Completo de Ferramentas & Templates</div>
-          <div class="group__item-desc">Worksheets, checklists, frameworks, planilhas, roteiros de comunicação, canvas de inovação. Pronto para usar.</div>
-        </div>
-        <div class="group__item-price">
-          <div class="group__item-price-label">Valor</div>
-          <div class="group__item-price-val">R$ 8.000</div>
-          <div class="group__item-price-note">+40 ferramentas</div>
-        </div>
-      </div>
-      <div class="group__total">
-        <span class="group__total-label">Subtotal Ferramentas</span>
-        <span class="group__total-val">R$ 14.000</span>
       </div>
     </div>
   </div>
 
   <!-- GRAND TOTAL -->
-  <div class="stack-grand reveal" aria-label="Valor total: 109 mil reais">
-    <div class="overline" style="margin-bottom:var(--sp-16);">Valor Total de Tudo Que Você Recebe</div>
-    <div class="stack-grand__val">R$ 109.000</div>
-    <p class="stack-grand__note">"Este é o valor real se você contratasse cada componente separadamente."</p>
+  <div class="stk-total reveal" aria-label="Valor total: 109 mil reais">
+    <div class="over" style="margin-bottom:var(--sp-16);">Valor Total de Tudo Que Você Recebe</div>
+    <div class="stk-total__v">R$ 109.000</div>
+    <p class="stk-total__n">"Este é o valor real se você contratasse cada componente separadamente."</p>
   </div>
-
 </div>
 ```
 
   </section>
 
-  <!-- ═══ SCREEN 5: FILTER ═══ -->
+  <!-- ═══ 5. FILTER — Tabs ═══ -->
 
-  <section class="screen" id="filter" aria-labelledby="filter-h">
-    <div class="container center">
-      <span class="overline reveal">Filtro de Entrada</span>
-      <hr class="gold-rule gold-rule--center reveal d1" aria-hidden="true">
-      <h2 id="filter-h" class="t-title1 reveal d1">A ALIANÇA não é para <em>todas</em>.<br>É para as <span class="text-gold">certas</span>.</h2>
-      <div class="filter-grid" style="text-align:left;">
-        <div class="reveal">
-          <h3 class="t-title3 text-gold-solid" style="margin-bottom:var(--sp-24);">Isso é para você se:</h3>
-          <ul class="filter-list" role="list">
-            <li class="filter-list__item"><span class="filter-icon filter-icon--yes" aria-hidden="true">◆</span>Você lidera — um negócio, uma equipe, um ministério, uma família — e quer fazer isso com excelência e paz.</li>
-            <li class="filter-list__item"><span class="filter-icon filter-icon--yes" aria-hidden="true">◆</span>Você está cansada de crescer sozinha e quer um círculo íntimo à altura.</li>
-            <li class="filter-list__item"><span class="filter-icon filter-icon--yes" aria-hidden="true">◆</span>Você valoriza fé, estratégia e execução — e entende que as três caminham juntas.</li>
-            <li class="filter-list__item"><span class="filter-icon filter-icon--yes" aria-hidden="true">◆</span>Você está disposta a se comprometer com 12 meses de processo real.</li>
-            <li class="filter-list__item"><span class="filter-icon filter-icon--yes" aria-hidden="true">◆</span>Você entende que investir em si mesma é o investimento com maior ROI que existe.</li>
-          </ul>
-        </div>
-        <div class="reveal d2">
-          <h3 class="t-title3" style="color:var(--text-quaternary);margin-bottom:var(--sp-24);">Isso NÃO é para você se:</h3>
-          <ul class="filter-list" role="list">
-            <li class="filter-list__item"><span class="filter-icon filter-icon--no" aria-hidden="true">✕</span>Você está buscando mais um curso online para assistir e não aplicar.</li>
-            <li class="filter-list__item"><span class="filter-icon filter-icon--no" aria-hidden="true">✕</span>Você não está disposta a ser vulnerável e fazer o trabalho interno.</li>
-            <li class="filter-list__item"><span class="filter-icon filter-icon--no" aria-hidden="true">✕</span>Você espera resultados sem comprometimento com o processo.</li>
-            <li class="filter-list__item"><span class="filter-icon filter-icon--no" aria-hidden="true">✕</span>Você não vê valor em comunidade e mentoria — quer resolver tudo sozinha.</li>
-            <li class="filter-list__item"><span class="filter-icon filter-icon--no" aria-hidden="true">✕</span>Você busca motivação passageira, não transformação real.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+  <section class="scr" id="filter" aria-labelledby="fh">
+    <div class="con center">
+      <span class="over reveal">Filtro de Entrada</span>
+      <hr class="gr gr-c reveal d1" aria-hidden="true">
+      <h2 id="fh" class="t-t1 reveal d1">A ALIANÇA não é para <em>todas</em>.<br>É para as <span class="tg">certas</span>.</h2>
+
+```
+  <div class="tabs reveal d2" role="tablist">
+    <button class="tab-btn act" role="tab" aria-selected="true" data-tab="yes">É para você se</button>
+    <button class="tab-btn" role="tab" aria-selected="false" data-tab="no">NÃO é para você se</button>
+  </div>
+
+  <div class="tab-panel act" id="tab-yes" role="tabpanel">
+    <ul class="fl" role="list">
+      <li class="fl__i"><span class="fl__ic fl__ic--y" aria-hidden="true">◆</span>Você lidera — um negócio, uma equipe, um ministério, uma família — e quer fazer isso com excelência e paz.</li>
+      <li class="fl__i"><span class="fl__ic fl__ic--y" aria-hidden="true">◆</span>Você está cansada de crescer sozinha e quer um círculo íntimo à altura.</li>
+      <li class="fl__i"><span class="fl__ic fl__ic--y" aria-hidden="true">◆</span>Você valoriza fé, estratégia e execução — e entende que as três caminham juntas.</li>
+      <li class="fl__i"><span class="fl__ic fl__ic--y" aria-hidden="true">◆</span>Você está disposta a se comprometer com 12 meses de processo real.</li>
+      <li class="fl__i"><span class="fl__ic fl__ic--y" aria-hidden="true">◆</span>Você entende que investir em si mesma é o investimento com maior ROI que existe.</li>
+    </ul>
+  </div>
+  <div class="tab-panel" id="tab-no" role="tabpanel">
+    <ul class="fl" role="list">
+      <li class="fl__i"><span class="fl__ic fl__ic--n" aria-hidden="true">✕</span>Você está buscando mais um curso online para assistir e não aplicar.</li>
+      <li class="fl__i"><span class="fl__ic fl__ic--n" aria-hidden="true">✕</span>Você não está disposta a ser vulnerável e fazer o trabalho interno.</li>
+      <li class="fl__i"><span class="fl__ic fl__ic--n" aria-hidden="true">✕</span>Você espera resultados sem comprometimento com o processo.</li>
+      <li class="fl__i"><span class="fl__ic fl__ic--n" aria-hidden="true">✕</span>Você não vê valor em comunidade e mentoria — quer resolver tudo sozinha.</li>
+      <li class="fl__i"><span class="fl__ic fl__ic--n" aria-hidden="true">✕</span>Você busca motivação passageira, não transformação real.</li>
+    </ul>
+  </div>
+</div>
+```
+
   </section>
 
   <hr class="sep" aria-hidden="true">
 
-  <!-- ═══ SCREEN 6: MENTOR ═══ -->
+  <!-- ═══ 6. MENTOR ═══ -->
 
-  <section class="screen mentor-screen" id="mentor" aria-labelledby="mentor-h">
-    <div class="container">
-      <span class="overline reveal">Sua Mentora</span>
-      <hr class="gold-rule gold-rule--left reveal d1" aria-hidden="true">
-      <h2 id="mentor-h" class="t-title2 reveal d1" style="max-width:560px;">
-        <span class="text-gold">Patricia Leal</span> — A mulher por trás da ALIANÇA
-      </h2>
+  <section class="scr ment" id="mentor" aria-labelledby="mh">
+    <div class="con">
+      <span class="over reveal">Sua Mentora</span>
+      <hr class="gr gr-l reveal d1" aria-hidden="true">
+      <h2 id="mh" class="t-t2 reveal d1" style="max-width:560px;"><span class="tg">Patricia Leal</span> — A mulher por trás da ALIANÇA</h2>
       <div style="max-width:640px;" class="reveal d2">
-        <p class="t-body-lg" style="margin-top:var(--sp-32);">
-          Patricia Leal carrega no nome a essência do que ensina: a dignidade da <strong style="color:var(--gold-500);">Nobreza</strong> e a constância da <strong style="color:var(--gold-500);">Fidelidade</strong>. Não é teoria — é a vida que ela vive e o legado que constrói a cada mulher que aceita caminhar em aliança.
-        </p>
-        <p class="t-body-lg" style="margin-top:var(--sp-16);">
-          Mentora de líderes, empreendedoras e mulheres de influência. Sua abordagem une fé profunda, inteligência estratégica e acompanhamento real — porque nenhuma mulher deveria carregar o peso da liderança sozinha.
-        </p>
-        <blockquote class="mentor-quote">
-          "Eu não vou te dar mais conteúdo. Eu vou caminhar com você. E juntas, vamos destravar o que sempre esteve aí — esperando a aliança certa para florescer."
-        </blockquote>
+        <p class="t-bl" style="margin-top:var(--sp-32);">Patricia Leal carrega no nome a essência do que ensina: a dignidade da <strong style="color:var(--gold-500)">Nobreza</strong> e a constância da <strong style="color:var(--gold-500)">Fidelidade</strong>. Não é teoria — é a vida que ela vive e o legado que constrói a cada mulher que aceita caminhar em aliança.</p>
+        <p class="t-bl" style="margin-top:var(--sp-16);">Mentora de líderes, empreendedoras e mulheres de influência. Sua abordagem une fé profunda, inteligência estratégica e acompanhamento real.</p>
+        <blockquote class="ment-q">"Eu não vou te dar mais conteúdo. Eu vou caminhar com você. E juntas, vamos destravar o que sempre esteve aí — esperando a aliança certa para florescer."</blockquote>
       </div>
     </div>
   </section>
 
-  <!-- ═══ SCREEN 7: PRICING ═══ -->
+  <!-- ═══ 7. PRICING ═══ -->
 
-  <section class="screen pricing-screen" id="pricing" aria-labelledby="pricing-h">
-    <div class="container">
-      <span class="overline reveal">Investimento</span>
-      <hr class="gold-rule gold-rule--center reveal d1" aria-hidden="true">
-      <h2 id="pricing-h" class="t-title1 reveal d1">O preço de caminhar<br><span class="text-gold">sozinha</span> é muito maior.</h2>
-
-```
-  <div class="pricing-card reveal d2">
-    <!-- SINGLE ANCHOR: only R$ 109.000 -->
-    <div class="pricing-anchor">
-      <div class="pricing-anchor__label">Valor total dos componentes</div>
-      <div class="pricing-anchor__val">R$ 109.000</div>
+  <section class="scr prc" id="pricing" aria-labelledby="prh">
+    <div class="con">
+      <span class="over reveal">Investimento</span>
+      <hr class="gr gr-c reveal d1" aria-hidden="true">
+      <h2 id="prh" class="t-t1 reveal d1">O preço de caminhar<br><span class="tg">sozinha</span> é muito maior.</h2>
+      <div class="prc-card reveal d2">
+        <div class="prc-anc">
+          <div class="prc-anc__lb">Valor total dos componentes</div>
+          <div class="prc-anc__v">R$ 109.000</div>
+        </div>
+        <div>
+          <div class="over" style="margin-bottom:var(--sp-16);">Seu investimento na ALIANÇA</div>
+          <div class="prc-blur-zone" role="button" aria-label="Valor oculto — revelado após aprovação no processo seletivo">
+            <div class="prc-blur" aria-hidden="true">R$ X.XXX.XXX</div>
+            <div class="prc-blur-tip">Aplique para descobrir →</div>
+          </div>
+          <span class="sr">Valor revelado apenas para candidatas aprovadas no processo seletivo.</span>
+          <p class="prc-hint">O valor é revelado apenas para candidatas aprovadas.</p>
+        </div>
+        <p class="prc-note">Este não é um programa para quem busca o menor preço.<br>É para quem entende que o menor <strong>custo</strong> é continuar onde está.</p>
+      </div>
+      <div class="cta-w reveal">
+        <a href="#aplicar" class="btn" role="button" aria-label="Candidatar-se ao Mastermind ALIANÇA">Quero Me Candidatar à ALIANÇA<span class="btn__ar" aria-hidden="true">→</span></a>
+        <p class="cta-m">Vagas limitadas · Processo de seleção · Resposta em até 48h</p>
+      </div>
     </div>
-
-    <div>
-      <div class="overline" style="margin-bottom:var(--sp-16);">Seu investimento na ALIANÇA</div>
-      <div class="pricing-blurred" aria-hidden="true">R$ X.XXX.XXX</div>
-      <span class="sr-only">Valor revelado apenas para candidatas aprovadas no processo seletivo.</span>
-      <p class="pricing-hint">O valor é revelado apenas para candidatas aprovadas.</p>
-    </div>
-
-    <p class="pricing-note">
-      Este não é um programa para quem busca o menor preço.<br>
-      É para quem entende que o menor <strong>custo</strong> é continuar onde está.
-    </p>
-  </div>
-
-  <div class="cta-wrap reveal">
-    <a href="#aplicar" class="btn-primary" role="button" aria-label="Candidatar-se ao Mastermind ALIANÇA">
-      Quero Me Candidatar à ALIANÇA
-      <span class="btn-arrow" aria-hidden="true">→</span>
-    </a>
-    <p class="cta-meta">Vagas limitadas · Processo de seleção · Resposta em até 48h</p>
-  </div>
-</div>
-```
-
   </section>
 
   <hr class="sep" aria-hidden="true">
 
-  <!-- ═══ SCREEN 8: CLOSE ═══ -->
+  <!-- ═══ 8. CLOSE ═══ -->
 
-  <section class="screen final" id="close" aria-labelledby="close-h">
-    <div class="container">
-      <div class="ornament" aria-hidden="true"><span class="ornament__sym">◆</span></div>
-      <h2 id="close-h" class="sr-only">Encerramento</h2>
-      <p class="final-quote reveal" style="margin-top:var(--sp-32);">
-        "Não existe liderança inabalável construída no isolamento. Existe a mulher que teve a <strong>coragem de firmar a aliança certa</strong> — e nunca mais voltou a ser a mesma."
-      </p>
-      <div class="cta-wrap reveal d1">
-        <a href="#aplicar" class="btn-primary" role="button">
-          Aplicar Agora
-          <span class="btn-arrow" aria-hidden="true">→</span>
-        </a>
-      </div>
+  <section class="scr fin" id="close" aria-labelledby="ch">
+    <div class="con">
+      <div class="orn" aria-hidden="true"><span class="orn__sym" style="font-size:7px">◆</span></div>
+      <h2 id="ch" class="sr">Encerramento</h2>
+      <p class="fin-q reveal" style="margin-top:var(--sp-32);">"Não existe liderança inabalável construída no isolamento. Existe a mulher que teve a <strong>coragem de firmar a aliança certa</strong> — e nunca mais voltou a ser a mesma."</p>
+      <div class="cta-w reveal d1"><a href="#aplicar" class="btn" role="button">Aplicar Agora<span class="btn__ar" aria-hidden="true">→</span></a></div>
     </div>
   </section>
 
 </main>
 
-<footer role="contentinfo">
-  <div class="container">
-    <p class="t-micro" style="color:var(--text-placeholder)">ALIANÇA — Mastermind de Liderança Inabalável · Patricia Leal · Todos os direitos reservados</p>
-  </div>
-</footer>
+<footer role="contentinfo"><div class="con"><p class="t-mic" style="color:var(--text-5)">ALIANÇA — Mastermind de Liderança Inabalável · Patricia Leal · Todos os direitos reservados</p></div></footer>
 
 <script>
 (function(){
   'use strict';
 
-  // Scroll Reveal
-  var reveals=document.querySelectorAll('.reveal');
+  // ── Scroll Reveal ──
+  var revs=document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
-    var obs=new IntersectionObserver(function(entries){
-      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');obs.unobserve(e.target)}});
-    },{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
-    reveals.forEach(function(el){obs.observe(el)});
-  }else{
-    reveals.forEach(function(el){el.classList.add('is-visible')});
-  }
+    var ro=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vis');ro.unobserve(x.target)}})},{threshold:.06,rootMargin:'0px 0px -30px 0px'});
+    revs.forEach(function(el){ro.observe(el)});
+  }else{revs.forEach(function(el){el.classList.add('vis')})}
 
-  // Scroll Progress
-  var bar=document.querySelector('.scroll-progress');
-  var tick=false;
-  function updateBar(){
-    var s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
-    bar.style.width=(h>0?(s/h)*100:0)+'%';tick=false;
-  }
-  window.addEventListener('scroll',function(){if(!tick){requestAnimationFrame(updateBar);tick=true}},{passive:true});
+  // ── Scroll Progress ──
+  var bar=document.querySelector('.spb'),tk=false;
+  function upBar(){var s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;bar.style.width=(h>0?(s/h)*100:0)+'%';tk=false}
+  window.addEventListener('scroll',function(){if(!tk){requestAnimationFrame(upBar);tk=true}},{passive:true});
 
-  // Section Nav
-  var dots=document.querySelectorAll('.sec-nav__dot');
-  var secs=[];
-  dots.forEach(function(d){
-    var t=document.getElementById(d.getAttribute('data-target'));
-    if(t)secs.push({dot:d,sec:t});
-    d.addEventListener('click',function(){if(t)t.scrollIntoView({behavior:'smooth',block:'start'})});
-  });
+  // ── Nav Dots ──
+  var dots=document.querySelectorAll('.snav__d'),secs=[];
+  dots.forEach(function(d){var t=document.getElementById(d.getAttribute('data-t'));if(t)secs.push({d:d,s:t});d.addEventListener('click',function(){if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
   if(secs.length&&'IntersectionObserver' in window){
-    var nobs=new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){
-          dots.forEach(function(d){d.classList.remove('is-active')});
-          var m=secs.find(function(s){return s.sec===e.target});
-          if(m)m.dot.classList.add('is-active');
-        }
-      });
-    },{threshold:0.25});
-    secs.forEach(function(s){nobs.observe(s.sec)});
+    var no=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){dots.forEach(function(d){d.classList.remove('act')});var m=secs.find(function(s){return s.s===x.target});if(m)m.d.classList.add('act')}})},{threshold:.2});
+    secs.forEach(function(s){no.observe(s.s)});
   }
+
+  // ── Accordions ──
+  document.querySelectorAll('[data-acc]').forEach(function(acc){
+    var hd=acc.querySelector('.acc__hd');
+    var bd=acc.querySelector('.acc__bd');
+    function toggle(){
+      var open=acc.classList.toggle('is-open');
+      hd.setAttribute('aria-expanded',open);
+      bd.setAttribute('aria-hidden',!open);
+    }
+    hd.addEventListener('click',toggle);
+    hd.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}});
+  });
+
+  // ── Pillar cards: toggle on tap for touch devices ──
+  document.querySelectorAll('.pil').forEach(function(p){
+    p.addEventListener('click',function(){p.classList.toggle('is-open')});
+    p.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();p.classList.toggle('is-open')}});
+  });
+
+  // ── Tabs ──
+  var tabBtns=document.querySelectorAll('.tab-btn');
+  var tabPanels=document.querySelectorAll('.tab-panel');
+  tabBtns.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      tabBtns.forEach(function(b){b.classList.remove('act');b.setAttribute('aria-selected','false')});
+      tabPanels.forEach(function(p){p.classList.remove('act')});
+      btn.classList.add('act');
+      btn.setAttribute('aria-selected','true');
+      var target=btn.getAttribute('data-tab');
+      document.getElementById('tab-'+target).classList.add('act');
+    });
+  });
+
 })();
 </script>
 
 </body>
-</html>
+</html>      
